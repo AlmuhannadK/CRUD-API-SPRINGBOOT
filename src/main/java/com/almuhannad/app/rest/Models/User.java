@@ -1,6 +1,7 @@
 package com.almuhannad.app.rest.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class User {
@@ -11,12 +12,15 @@ public class User {
 
     //each will be a column in the mysql database
     @Column
+    @NotNull
     private String firstName;
     @Column
+    @NotNull
     private String lastName;
     @Column
     private int age;
     @Column
+    @NotNull
     private String occupation;
 
     //Getters & Setters for fields
