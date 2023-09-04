@@ -2,6 +2,7 @@ package com.almuhannad.app.rest.Controller;
 
 import com.almuhannad.app.rest.Models.User;
 import com.almuhannad.app.rest.Repo.UserRepo;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,14 +28,14 @@ public class ApiControllers {
 
     //add new user records
     @PostMapping(value ="/save")
-    public String saveUser(@RequestBody User user){
+    public String saveUser(@RequestBody @Valid User user){
         userRepo.save(user);
         return "New User Saved! ...";
     }
 
     //update user records
     @PutMapping(value = "/update/{id}")
-    public String updateUser(@PathVariable long id, @RequestBody User user){
+    public String updateUser(@PathVariable long id, @RequestBody @Valid User user){
         User updatedUser = userRepo.findById(id).get(); //return the user with this id
         //update the following fields
         updatedUser.setFirstName(user.getFirstName());
