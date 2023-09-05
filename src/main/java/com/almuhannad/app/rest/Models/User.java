@@ -1,6 +1,7 @@
 package com.almuhannad.app.rest.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -22,6 +23,9 @@ public class User {
     @Column
     @NotNull
     private String occupation;
+
+    @Email
+    private String email;
 
     //Getters & Setters for fields
     public long getId() {
