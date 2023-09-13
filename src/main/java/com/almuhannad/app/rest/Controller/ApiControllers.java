@@ -1,9 +1,14 @@
 package com.almuhannad.app.rest.Controller;
 
-import com.almuhannad.app.rest.Models.User;
-import com.almuhannad.app.rest.Repo.UserRepo;
+import com.almuhannad.app.rest.Dto.OrderRequest;
+import com.almuhannad.app.rest.Dto.OrderResponse;
+import com.almuhannad.app.rest.Entity.User;
+import com.almuhannad.app.rest.Repository.UserRepo;
+import com.almuhannad.app.rest.Service.ProductService;
+import com.almuhannad.app.rest.Service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +17,9 @@ import java.util.List;
 public class ApiControllers {
 
     @Autowired
-    private UserRepo userRepo;
+    private UserService userService;
+    @Autowired
+    private ProductService productService;
 
 
     @GetMapping(value = "/")
@@ -21,41 +28,41 @@ public class ApiControllers {
     }
 
     //get all user records
-    @GetMapping(value="/users")
-    public List<User> getUsers(){
-        return userRepo.findAll();
+    @GetMapping(value="/getAllUsers")
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
     }
 
     //add new user records
-    @PostMapping(value ="/save")
-    public String saveUser(@RequestBody @Valid User user){
-        userRepo.save(user);
-        return "New User Saved! ...";
+    @PostMapping(value ="/saveUser")
+    public User saveUser(@RequestBody User user){
+        this.userService.saveUser(user);
+        return user;
     }
 
     //update user records
-    @PutMapping(value = "/update/{id}")
-    public String updateUser(@PathVariable long id, @RequestBody @Valid User user){
-        User updatedUser = userRepo.findById(id).get(); //return the user with this id
-        //update the following fields
-        updatedUser.setFirstName(user.getFirstName());
-        updatedUser.setLastName(user.getLastName());
-        updatedUser.setOccupation(user.getOccupation());
-        updatedUser.setAge(user.getAge());
-        //save changes made
-        userRepo.save(updatedUser);
-        return "User Updated! ...";
+    @PutMapping(value = "/updateUser/{id}")
+    public String updateUser(@PathVariable long id, @RequestBody User user){
+        this.userService.updateUser(id, user);
+        return "User data updated!";
     }
 
     //delete user records
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/deleteUser/{id}")
     public String deleteUser(@PathVariable long id){
-
-        User deleteUser = userRepo.findById(id).get();
-        userRepo.delete(deleteUser);
-
+        this.userService.deleteUser(id);
         return "Deleted User With The ID --> " + id;
+    }
 
+
+    @PostMapping(value = "/placeOrder")
+    public String placeOrder(@RequestBody OrderRequest request){
+        return this.userService.saveUser(request.getUser());
+    }
+
+    @GetMapping(value = "/getInfo")
+    public List<OrderResponse> getJoinInformation(){
+        return this.userService.getJoinInformation();
     }
 
 }
