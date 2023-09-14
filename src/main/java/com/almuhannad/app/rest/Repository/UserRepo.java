@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserRepo extends JpaRepository<User, Long> {
 
-    @Query(value = "SELECT new com.almuhannad.app.rest.Dto.OrderResponse(u.name , p.productName) FROM User u JOIN u.products p") //map to class for return
+    @Query(value = "SELECT new com.almuhannad.app.rest.Dto.OrderResponse(u.name , p.productName) FROM User u JOIN u.products p") //
     List<OrderResponse> getJoinInformation();
 
 
