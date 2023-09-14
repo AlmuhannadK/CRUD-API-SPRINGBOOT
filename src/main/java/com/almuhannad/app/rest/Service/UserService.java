@@ -1,5 +1,6 @@
 package com.almuhannad.app.rest.Service;
 
+import com.almuhannad.app.rest.Dto.OrderRequest;
 import com.almuhannad.app.rest.Dto.OrderResponse;
 import com.almuhannad.app.rest.Entity.User;
 import com.almuhannad.app.rest.Repository.UserRepo;
@@ -60,12 +61,17 @@ public class UserService {
 
     public void deleteUser(long id){
         User deleteUser = userRepo.findById(id).get();
-        userRepo.delete(deleteUser);
+        userRepo.deleteById(deleteUser.getId());
     }
 
 
+    //           JPQL Queries
     public List<OrderResponse> getJoinInformation(){
         return this.userRepo.getJoinInformation();
+    }
+
+    public List<User> getGmailAccounts(){
+        return this.userRepo.getGmailAccounts();
     }
 
 

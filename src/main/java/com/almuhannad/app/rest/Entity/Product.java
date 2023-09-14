@@ -13,8 +13,12 @@ import lombok.*;
 
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
+    @Column
     private String productName;
+    @Column
     private Integer quantity;
+    @Column
     private Integer price;
 }
