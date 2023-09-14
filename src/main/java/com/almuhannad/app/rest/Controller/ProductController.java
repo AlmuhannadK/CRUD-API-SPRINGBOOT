@@ -28,13 +28,11 @@ public class ProductController {
 
     //delete product by id
     @DeleteMapping(value = "/admin/delete-product/{productId}")
-    public String deleteProduct(@PathVariable Integer productId){
+    public void deleteProduct(@PathVariable Integer productId){
         Optional<Product> opt = this.productService.getProductById(productId);
         if(opt.isPresent()){
             this.productService.deleteProduct(productId);
-            return "User data deleted!";
-        } else{
-            return "No data found for this id";
+
         }
     }
 }

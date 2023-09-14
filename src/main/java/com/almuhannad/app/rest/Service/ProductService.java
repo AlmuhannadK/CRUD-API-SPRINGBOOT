@@ -22,11 +22,9 @@ public class ProductService {
             return null;
         }
     }
-
     public List<Product> getProduct(){
         return this.productRepo.findAll();
     }
-
     public Optional<Product> getProductById(Integer productId){
         Optional<Product> opt = this.productRepo.findById(productId);
         if(opt.isPresent()){
@@ -35,8 +33,10 @@ public class ProductService {
             return null;
         }
     }
-
     public void deleteProduct(Integer productId){
-        this.getProductById(productId);
+        Optional<Product> product = this.productRepo.findById(productId);
+        if(product.isPresent()){
+            this.productRepo.deleteById(productId);
+        }
     }
 }

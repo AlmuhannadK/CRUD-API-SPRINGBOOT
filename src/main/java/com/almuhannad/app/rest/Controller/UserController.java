@@ -60,4 +60,10 @@ public class UserController {
         return this.userService.getGmailAccounts();
     }
 
+
+    @PutMapping(value = "/reset-email")
+    public void resetEmailJPQL(@RequestBody User user){
+       this.userService.resetEmailJPQL(user.getEmail(), user.getId());
+    }
+
 }

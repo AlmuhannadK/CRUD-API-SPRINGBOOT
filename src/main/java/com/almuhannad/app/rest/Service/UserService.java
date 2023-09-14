@@ -74,6 +74,17 @@ public class UserService {
         return this.userRepo.getGmailAccounts();
     }
 
+    public void resetEmailJPQL(String email, long id){
+        Optional<User> opt = this.userRepo.findById(id);
+        if(opt.isPresent() && !(opt.get().getEmail().isEmpty()) ){
+            this.userRepo.resetEmailJPQL(email, id);
+        }else{
+            if(opt.isPresent() && (opt.get().getEmail().isEmpty())){
+                System.out.println("CONTACT ADMIN TO ADD EMAIL ADDRESS");
+            }
+        }
+    }
+
 
 
 
