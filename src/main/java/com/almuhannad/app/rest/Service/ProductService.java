@@ -17,4 +17,6 @@ public interface ProductService {
     Optional<Product> getProductById(Integer productId);
 
     void deleteProduct(Integer productId);
+
+    List<Product> getProductsByProductNameContaining(String product);
 }

@@ -35,4 +35,11 @@ public class ProductController {
 
         }
     }
+
+    //DerQuery containing
+    @GetMapping(path="/get-productname-containing")
+    public List<Product> findAllByFirstNameContaining(@RequestParam String product){
+        return this.productService.getProductsByProductNameContaining(product);
+    }
+
 }

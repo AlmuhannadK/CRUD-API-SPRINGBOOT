@@ -48,4 +48,10 @@ public class ProductServiceImplementation implements ProductService {
             this.productRepo.deleteById(productId);
         }
     }
+
+    @Override
+    public List<Product> getProductsByProductNameContaining(String product){
+        return this.productRepo.getProductsByProductNameContaining(product);
+    }
+
 }
