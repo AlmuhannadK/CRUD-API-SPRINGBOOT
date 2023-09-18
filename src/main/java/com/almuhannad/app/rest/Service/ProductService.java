@@ -10,11 +10,11 @@ import java.util.Optional;
 @Service
 public interface ProductService {
 
-    public Product addProduct(Product product);
+    Product addProduct(Product product);
 
-    public List<Product> getProduct();
+    List<Product> getProduct();
 
-    public Optional<Product> getProductById(Integer productId);
+    Optional<Product> getProductById(Integer productId);
 
-    public void deleteProduct(Integer productId);
+    void deleteProduct(Integer productId);
 }

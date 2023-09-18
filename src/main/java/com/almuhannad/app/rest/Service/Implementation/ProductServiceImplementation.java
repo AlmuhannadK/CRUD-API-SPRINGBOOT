@@ -16,6 +16,12 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     public Product addProduct(Product product){
+//        Optional<Product> opt = Optional.of(product);
+//        if(opt.isPresent()){
+//            return this.productRepo.save(product);
+//        }else{
+//            return null;
+//        }
         if(product != null){
             return this.productRepo.save(product);
         }else{

@@ -9,17 +9,19 @@ import java.util.List;
 @Service
 public interface UserService {
 
-    public List<User> getAllUsers();
+    List<User> getAllUsers();
 
-    public String saveUser(User user);
+    String saveUser(User user);
 
-    public void updateUser(long id,  User user);
+    void updateUser(long id,  User user);
 
-    public void deleteUser(long id);
+    void deleteUser(long id);
 
-    public List<OrderResponse> getJoinInformation();
+    List<OrderResponse> getJoinInformation();
 
-    public List<User> getGmailAccounts();
+    List<User> getGmailAccounts();
 
-    public void resetEmailJPQL(String email, long id);
+    void resetEmailJPQL(String email, long id);
+
+    List<User> getAllByNameStartingWith(String name);
 }

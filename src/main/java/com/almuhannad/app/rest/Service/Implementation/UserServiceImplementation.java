@@ -16,9 +16,7 @@ public class UserServiceImplementation implements UserService {
     @Autowired
     private UserRepo userRepo;
 
-
     //private User user;
-
     @Override
     public List<User> getAllUsers(){
         return this.userRepo.findAll();
@@ -61,7 +59,6 @@ public class UserServiceImplementation implements UserService {
         userRepo.deleteById(deleteUser.getId());
     }
 
-
     //           JPQL Queries
     @Override
     public List<OrderResponse> getJoinInformation(){
@@ -85,5 +82,9 @@ public class UserServiceImplementation implements UserService {
         }
     }
 
-
+    // Derived Queries
+    @Override
+    public List<User> getAllByNameStartingWith(String name){
+        return this.userRepo.getAllByNameStartingWith(name);
+    }
 }

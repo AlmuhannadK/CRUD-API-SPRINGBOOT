@@ -65,4 +65,10 @@ public class UserController {
        this.userService.resetEmailJPQL(user.getEmail(), user.getId());
     }
 
+    //Derived Queries
+    @GetMapping(value = "/name-starting-with")
+    public List<User> getAllByNameStartingWith(@RequestParam String name){
+        return this.userService.getAllByNameStartingWith(name);
+    }
+
 }
