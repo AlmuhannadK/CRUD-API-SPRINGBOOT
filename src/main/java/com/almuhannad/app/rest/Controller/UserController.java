@@ -4,6 +4,7 @@ import com.almuhannad.app.rest.Dto.OrderRequest;
 import com.almuhannad.app.rest.Dto.OrderResponse;
 import com.almuhannad.app.rest.Entity.User;
 import com.almuhannad.app.rest.Service.UserService;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -24,7 +25,7 @@ public class UserController {
 
     //add new user records
     @PostMapping(value ="/saveUser")
-    public User saveUser(@RequestBody User user){
+    public User saveUser(@NonNull @RequestBody User user){
         this.userService.saveUser(user);
         return user;
     }
