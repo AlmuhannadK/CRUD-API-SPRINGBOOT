@@ -1,9 +1,9 @@
-package com.almuhannad.app.rest.Service.Implementation;
+package com.almuhannad.app.order.service.implementation;
 
-import com.almuhannad.app.rest.Dto.OrderResponse;
-import com.almuhannad.app.rest.Entity.User;
-import com.almuhannad.app.rest.Repository.UserRepo;
-import com.almuhannad.app.rest.Service.UserService;
+import com.almuhannad.app.order.dto.OrderResponse;
+import com.almuhannad.app.order.entity.User;
+import com.almuhannad.app.order.repository.UserRepo;
+import com.almuhannad.app.order.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +37,6 @@ public class UserServiceImplementation implements UserService {
     public void updateUser(long id,  User user) {
         User updatedUser = userRepo.findById(id).get(); //return the user with this id
         //update the following fields
-
         if (user.getName() != null) {
             updatedUser.setName(user.getName());
         }
