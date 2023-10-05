@@ -5,16 +5,17 @@ import com.almuhannad.app.rest.Dto.OrderResponse;
 import com.almuhannad.app.rest.Entity.User;
 import com.almuhannad.app.rest.Service.UserService;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
 
     //get all user records
