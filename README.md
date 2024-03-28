@@ -1,3 +1,3 @@
 ## A simple CRUD API application using Java Spring Boot.
 
-Will be a building block for a more complex backend project later
+Practicing how to design and implement REST APIs for future projects
